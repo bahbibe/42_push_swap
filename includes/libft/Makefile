@@ -22,7 +22,7 @@ White	=\033[0;37m
 
 NAME = libft.a
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	ft_atoi.c\
 		ft_bzero.c\
@@ -74,18 +74,23 @@ SRCS =	ft_atoi.c\
 		ft_swap.c\
 		ft_sort_arr.c\
 
-OBJS =$(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 	@:
+
 $(NAME): $(OBJS)
-	@echo "$(Green)libft compiled ✅$(Off)"
-%.o: %.c libft.h
-	@cc $(FLAGS) -c $< -o $@
-	@ar -rcs $(NAME) $@
+	@ar -rcs $(NAME) $(OBJS)
+
+%.o: %.c
+	@gcc $(CFLAGS) -c $< -o $@
+
 clean:
-	@rm -rf $(OBJS)
+	@rm -f $(OBJS)
+
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
+
 re: fclean all
-.PHONY:all
+
+.PHONY: all clean fclean re

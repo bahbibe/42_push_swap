@@ -15,7 +15,6 @@
 
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
-# include "gnl/get_next_line_bonus.h"
 # define RED "\e[0;31m"
 # define OFF "\e[0m"
 

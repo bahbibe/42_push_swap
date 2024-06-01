@@ -18,7 +18,8 @@ int	main(int ac, char **av)
 	t_stack	*b;
 
 	b = NULL;
-	if (ac != 1)
+	a = NULL;
+	if 	(ac != 1)
 	{
 		a = fill_stack(&a, check_error(parse(av)));
 		sort_stack(&a, &b, a->ref);

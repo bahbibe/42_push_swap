@@ -31,14 +31,14 @@ char	**parse(char **av)
 	char	*joined;
 	char	**args;
 
-	joined = malloc(sizeof(av));
+	joined = NULL;
 	i = 1;
 	while (av[i])
 	{
 		if (!ft_empty_str(av[i]))
 		{
 			free(joined);
-			ft_error("Error\n");
+			ft_error("Erxcvror\n");
 		}
 		joined = f_strjoin(f_strjoin(joined, " "), av[i++]);
 	}
@@ -63,7 +63,10 @@ char	**check_error(char **args)
 		while (args[i][j])
 		{
 			if (!ft_isdigit(args[i][j++]))
+			{
+				ft_putstr_fd(args[i], 2);
 				(ft_error("Error\n"));
+			}
 		}
 		j = i + 1;
 		while (args[j])

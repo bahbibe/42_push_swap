@@ -41,13 +41,18 @@ void	sort_lot(t_stack **a, t_stack **b, int *arr, int range)
 			rb(b);
 			i++;
 		}
-		else if ((*a)->nb > arr[i] && (*a)->nb <= arr[range + i])
+		else if ((*a)->nb <= arr[range + i])
 		{
 			pb(a, b);
 			i++;
 		}
 		else
 			ra(a);
+	}
+	while (*b)
+	{
+		float_max(b, stack_size(*b));
+		pa(a, b);
 	}
 }
 
@@ -78,16 +83,11 @@ void	sort_stack(t_stack **a, t_stack **b, int *arr)
 		sort_few(a, b);
 		return ;
 	}
-	else if (size >= 6 && size <= 16)
-		range = 3;
+	else if (size >= 6 && size <= 100)
+		range = size / 3;
 	else if (size <= 100)
-		range = 15;
+		range = size / 6;
 	else
-		range = 40;
+		range = size / 12;
 	sort_lot(a, b, arr, range);
-	while (*b)
-	{
-		float_max(b, stack_size(*b));
-		pa(a, b);
-	}
 }

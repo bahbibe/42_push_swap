@@ -23,7 +23,7 @@ White	=\033[0;37m
 CC		=	cc
 NAME	=	push_swap
 B_NAME	=	checker
-FLAGS	=	-Wall -Wextra -Werror 
+CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3
 
 SRCS	=	push_swap.c \
 			src/base_operations.c \
@@ -52,23 +52,23 @@ INCLUDES	=	$(LIBS:%=includes/$*/%.a)
 
 all: $(LIBS) $(NAME)
 	@:
+
 bonus: libs $(B_NAME)
 	
 $(B_NAME):$(B_SRCS)
-	@$(CC) -I includes $(FLAGS) $(B_SRCS) $(INCLUDES)  -o $(B_NAME)
+	@$(CC) -I includes $(CFLAGS) $(B_SRCS) $(INCLUDES)  -o $(B_NAME)
 	@echo "$(Green)Checker Compiled ✅$(Off)"
 $(NAME): $(SRCS)
-	@$(CC) -I includes $(FLAGS) $(SRCS) $(INCLUDES)  -o $(NAME)
+	@$(CC) -I includes $(CFLAGS) $(SRCS) $(INCLUDES)  -o $(NAME)
 	@echo "$(Green)push_swap Compiled ✅$(Off)"
 	
 libs: $(LIBS)
 $(LIBS):
-	@make -C includes/$@
+	@make -s -C includes/$@
 	@cp includes/$@/$@.a includes
 clean:
-	@make -C includes/libft clean
-	@make -C includes/gnl clean
-	@echo "$(Green)Clean 🔰$(Off)"
+	@make -s -C includes/libft clean
+	@make -s -C includes/gnl clean
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(B_NAME)

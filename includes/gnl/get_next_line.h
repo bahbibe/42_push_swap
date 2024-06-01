@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <limits.h>
 
 char	*read_line(int fd, char *str);
 char	*true_line(char *str);
