@@ -38,7 +38,7 @@ char	**parse(char **av)
 		if (!ft_empty_str(av[i]))
 		{
 			free(joined);
-			ft_error("Erxcvror\n");
+			ft_error("Error\n");
 		}
 		joined = f_strjoin(f_strjoin(joined, " "), av[i++]);
 	}
@@ -63,10 +63,7 @@ char	**check_error(char **args)
 		while (args[i][j])
 		{
 			if (!ft_isdigit(args[i][j++]))
-			{
-				ft_putstr_fd(args[i], 2);
 				(ft_error("Error\n"));
-			}
 		}
 		j = i + 1;
 		while (args[j])

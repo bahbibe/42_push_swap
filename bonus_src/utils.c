@@ -31,7 +31,7 @@ char	**parse(char **av)
 	char	*joined;
 	char	**args;
 
-	joined = malloc(sizeof(av));
+	joined = NULL;
 	i = 1;
 	while (av[i])
 	{
