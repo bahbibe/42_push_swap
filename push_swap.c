@@ -16,13 +16,18 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		*ref;
 
 	b = NULL;
 	a = NULL;
 	if 	(ac != 1)
 	{
 		a = fill_stack(&a, check_error(parse(av)));
-		sort_stack(&a, &b, a->ref);
+		ref = a->ref;
+		sort_stack(&a, &b, ref);
+		free_stack(&a);
+		free_stack(&b);
+		free(ref);
 	}
 	return (0);
 }

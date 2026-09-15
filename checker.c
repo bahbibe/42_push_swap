@@ -45,11 +45,13 @@ int	main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 	char	*s;
+	int		*ref;
 
 	b = NULL;
 	if (ac != 1)
 	{
 		a = fill_stack(&a, check_error(parse(av)));
+		ref = a->ref;
 		s = get_next_line(0);
 		while (s)
 		{
@@ -65,6 +67,9 @@ int	main(int ac, char **av)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
+		free_stack(&a);
+		free_stack(&b);
+		free(ref);
 	}
 	return (0);
 }

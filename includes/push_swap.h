@@ -46,6 +46,7 @@ void	add_back(t_stack **stk, t_stack *new);
 t_stack	*new_stack(int content);
 t_stack	*stack_last(t_stack *stk);
 int		stack_size(t_stack *stk);
+void	free_stack(t_stack **stk);
 void	sort_lot(t_stack **a, t_stack **b, int *arr, int range);
 void	sort_stack(t_stack **a, t_stack **b, int *arr);
 void	float_min(t_stack **stk, int size);

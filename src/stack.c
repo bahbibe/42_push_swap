@@ -67,3 +67,15 @@ int	stack_size(t_stack *stk)
 	}
 	return (i);
 }
+
+void	free_stack(t_stack **stk)
+{
+	t_stack	*tmp;
+
+	while (*stk)
+	{
+		tmp = (*stk)->next;
+		free(*stk);
+		*stk = tmp;
+	}
+}
