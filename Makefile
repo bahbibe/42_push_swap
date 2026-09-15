@@ -47,7 +47,7 @@ B_SRCS	=	checker.c \
 
 LIBS		=	libft gnl
 
-INCLUDES	=	$(LIBS:%=includes/$*/%.a)
+INCLUDES	=	$(foreach lib,$(LIBS),includes/$(lib)/$(lib).a)
 
 
 all: $(LIBS) $(NAME)
