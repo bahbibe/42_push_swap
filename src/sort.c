@@ -86,9 +86,9 @@ void	sort_stack(t_stack **a, t_stack **b, int *arr)
 		return ;
 	}
 	else if (size <= 100)
-		range = size / 3;
-	else if (size <= 1000)
 		range = size / 6;
+	else if (size <= 1000)
+		range = size / 14;
 	else
 		range = size / 12;
 	sort_lot(a, b, arr, range);
