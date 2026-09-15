@@ -31,8 +31,10 @@ void	float_max(t_stack **stk, int size)
 void	sort_lot(t_stack **a, t_stack **b, int *arr, int range)
 {
 	int	i;
+	int	size;
 
 	i = 0;
+	size = stack_size(*a) + stack_size(*b);
 	while (*a)
 	{
 		if ((*a)->nb <= arr[i])
@@ -41,7 +43,8 @@ void	sort_lot(t_stack **a, t_stack **b, int *arr, int range)
 			rb(b);
 			i++;
 		}
-		else if ((*a)->nb > arr[i] && (*a)->nb <= arr[range + i])
+		else if ((*a)->nb > arr[i]
+			&& (*a)->nb <= arr[range + i < size ? range + i : size - 1])
 		{
 			pb(a, b);
 			i++;
