@@ -63,17 +63,20 @@ algorithm, because for that few elements a general bucket sort spends
 more moves than just handling the cases directly. From 6 elements up,
 one sorted reference array is built up front and `a` is walked once,
 pushing each value into `b` as soon as it falls in the current bucket;
-bucket width scales with input size (`size/3`, `size/6`, `size/12` tiers)
-to trade off number of passes against rotation cost.
+bucket width scales with input size (`size/6`, `size/14`, `size/12`
+tiers) to trade off number of passes against rotation cost. The two
+smaller tiers were swept against 100+ random trials plus adversarial
+orderings (descending, alternating) to find divisors that lower the
+average without regressing the worst case.
 
 Measured move counts (random input, no duplicates):
 
 | n (elements) | moves |
 |---:|---:|
 | 5 | 7 |
-| 100 | 708 |
-| 500 | 6,917 |
-| 1,000 | 24,193 |
+| 100 | 575 |
+| 500 | 5,107 |
+| 1,000 | 15,249 |
 
 ## checker (bonus)
 
